@@ -1,0 +1,7 @@
+Library/*
+Temp/*
+*.sln
+UnityPackageManager/manifest.json
+*.csproj
+obj/*
+*.suo
