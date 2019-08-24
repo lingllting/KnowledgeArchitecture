@@ -18,11 +18,25 @@ public class EventAndDelegate
     public event DemoDelegate<DemoEventArgs> demoEvent;
     // delegate
     public DemoDelegate<DemoEventArgs> demoDelegate;
+    
+    
     private void Trigger()
     {
+        // inside the class:event and delegate are quite similar
+        demoDelegate = delegateCallback;
+        demoEvent = eventCallback;
         demoDelegate(null, null);
-        // event cannot only be invoked inside the class
         demoEvent(null, null);
+    }
+    
+    public void delegateCallback(Object sender, DemoEventArgs e)
+    {
+        Debug.Log("delegateCallback");
+    }
+
+    public void eventCallback(Object sender, DemoEventArgs e)
+    {
+        Debug.Log("eventCallback");
     }
 }
 
@@ -33,9 +47,9 @@ public class User1 : MonoBehaviour
     private void Start()
     {
         // difference1
-        // delegate is allowed to use = operation
+        // delegate is allowed to use = operation outside the class which defines it.
         eventAndDelegate.demoDelegate = delegateCallback;
-        // event is not allowed to use = operation
+        // event is not allowed to use = operation outside the class which defines it.
         // eventAndDelegate.demoEvent = eventCallback; --compile error
         eventAndDelegate.demoEvent += eventCallback;
 
