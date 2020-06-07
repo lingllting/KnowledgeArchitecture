@@ -4,4 +4,7 @@ Temp/*
 UnityPackageManager/manifest.json
 *.csproj
 obj/*
+.idea/
 *.suo
+JetBrains/
+JetBrains.*
